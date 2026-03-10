@@ -37,7 +37,7 @@ export const getMinAndMaxStrikePrice = (
   strikeDistanceFromATM: StrikeDistancesFromATM
 ) => {
 
-  if (strikePrices.length === 0) {
+  if (!strikePrices || strikePrices.length === 0) {
     return {
       minStrike: null,
       maxStrike: null
@@ -47,7 +47,7 @@ export const getMinAndMaxStrikePrice = (
   if (strikeDistanceFromATM === "All") {
     return {
       minStrike: strikePrices[0],
-      maxStrike: strikePrices[strikePrices.length - 1]
+      maxStrike: strikePrices[strikePrices?.length - 1]
     };
   };
 
@@ -57,7 +57,7 @@ export const getMinAndMaxStrikePrice = (
 
   const nearestStrikePriceIndex = strikePrices.findIndex((strikePrice) => strikePrice === nearestStrikePrice);
   const minStrike = strikePrices[nearestStrikePriceIndex - strikeDistance] || strikePrices[0];
-  const maxStrike = strikePrices[nearestStrikePriceIndex + strikeDistance] || strikePrices[strikePrices.length - 1];
+  const maxStrike = strikePrices[nearestStrikePriceIndex + strikeDistance] || strikePrices[strikePrices?.length - 1];
 
   return {
     minStrike,

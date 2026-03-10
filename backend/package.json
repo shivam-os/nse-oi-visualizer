@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js"
+    "dev": "nodemon newServer.js"
   },
   "author": "",
   "license": "ISC",
@@ -14,7 +14,9 @@
     "axios": "1.6.2",
     "express": "^4.18.2",
     "gaussian": "^1.3.0",
-    "nodemon": "^3.0.2",
     "user-agents": "^1.1.63"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
   }
 }

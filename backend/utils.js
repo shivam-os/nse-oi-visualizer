@@ -210,11 +210,11 @@ export const getIVAndGreeks = ({ futuresPrice, timeToExpiry, riskFreeRate = 0, c
 };
 
 export const formatData = (data, underlying) => {
-  const records = data.records;
-  const dataPerExpiry = records.data.reduce((group, item) => {
-    const { expiryDate } = item;
-    group[expiryDate] = group[expiryDate] || [];
-    group[expiryDate].push(item);
+  const records = data?.records;
+  const dataPerExpiry = records?.data.reduce((group, item) => {
+    const { expiryDates } = item;
+    group[expiryDates] = group[expiryDates] || [];
+    group[expiryDates].push(item);
     return group;
   }, {});
 
@@ -273,8 +273,8 @@ export const formatData = (data, underlying) => {
 
   let mergedStrikePrices = [];
   for (const expiry of filteredExpiries) {
-    const strikePrices = dataPerExpiry[expiry].map((item) => item.strikePrice);
-    mergedStrikePrices = mergeTwoArrays(mergedStrikePrices, strikePrices);
+    const strikePrices = dataPerExpiry[expiry]?.map((item) => item.strikePrice);
+    mergedStrikePrices = mergeTwoArrays(mergedStrikePrices, strikePrices ?? []);
   };
 
   return {
